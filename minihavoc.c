@@ -65,6 +65,7 @@ void nRandomActions(int n) {
 void Main() {
   int stackvar = rand() % 50;
   int i;
+  srand(0xdeadbeef);
   MyInitThreads();
 
   for (i = 1; i < MAXTHREADS; i++) {
