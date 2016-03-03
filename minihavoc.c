@@ -3,10 +3,10 @@
 #include "umix.h"
 #include "mythreads.h"
 
-#define MAX_SPAWN 1000
-#define NUM_ACTIONS 5
-#define MIN_ACTIONS 100
-#define MAX_ACTIONS 500
+#define MAX_SPAWN 100000
+#define NUM_ACTIONS 4
+#define MIN_ACTIONS 10000
+#define MAX_ACTIONS 50000
 
 static int spawned = 0;
 
@@ -48,8 +48,10 @@ void mhDoExit(int n) {
   MyExitThread();
 }
 
+// You can try exiting as well by uncommenting and changing NUM_ACTIONS
+// Without exit, you get a lot more actions
 static void (*actions[NUM_ACTIONS])(int) = {
-  mhDoPrint, mhDoSpawn, mhDoYield, mhDoSched, mhDoExit
+  mhDoPrint, mhDoSpawn, mhDoYield, mhDoSched//, mhDoExit
 };
 
 void nRandomActions(int n) {
